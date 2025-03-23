@@ -15,7 +15,11 @@ module "apply_draw_function" {
 }
 
 module "count_draw_function" {
-  source          = "./lambda/count_draw"
+  source  = "./lambda/count_draw"
+}
+
+module "draw_draw_function" {
+  source  = "./lambda/draw_draw"
 }
 
 
