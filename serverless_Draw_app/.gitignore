@@ -1,4 +1,6 @@
 .terraform.lock.hcl
 .terraform/
 terraform.tfstate
-*.zip
+lambda/apply_draw/apply_draw.zip
+lambda/draw_draw/draw_draw.zip
+lambda/count_draw/count_draw.zip
