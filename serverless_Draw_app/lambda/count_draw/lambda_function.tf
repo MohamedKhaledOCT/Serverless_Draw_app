@@ -1,7 +1,9 @@
+variable "lambda_role_arn" {}
+
 resource "aws_lambda_function" "count_draw" {
   function_name = "count_Draw"
   runtime       = "nodejs20.x"
-  role          = "arn:aws:iam::024848465625:role/lambda_draw_role"
+  role          = var.lambda_role_arn
   handler       = "index.handler"
 
   filename      = "lambda/count_draw/count_draw.zip"

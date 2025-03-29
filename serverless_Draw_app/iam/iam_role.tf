@@ -20,9 +20,8 @@ resource "aws_iam_role" "lambda_draw_role" {
   }
 }
 
-resource "aws_iam_policy" "dynamodb_execution_policy" {
-  name        = "dynamodb_execution_policy"
-  description = "Policy for Lambda to execute and invoke DynamoDB actions"
+resource "aws_iam_policy" "lambda_policy" {
+  name = "lambda_policy"
 
   policy = jsonencode({
     Version = "2012-10-17",
@@ -30,24 +29,16 @@ resource "aws_iam_policy" "dynamodb_execution_policy" {
       {
         Effect   = "Allow",
         Action   = [
-          "dynamodb:GetItem",
-          "dynamodb:PutItem",
-          "dynamodb:Query",
-          "dynamodb:UpdateItem",
-          "dynamodb:DeleteItem"
+          "dynamodb:*",
+          "logs:*"
         ],
-        Resource = "*"
-      },
-      {
-        Effect   = "Allow",
-        Action   = "dynamodb:InvokeFunction",
         Resource = "*"
       }
     ]
   })
 }
 
-resource "aws_iam_role_policy_attachment" "attach_dynamodb_execution" {
+resource "aws_iam_role_policy_attachment" "lambda_policy_attach" {
   role       = aws_iam_role.lambda_draw_role.name
-  policy_arn = aws_iam_policy.dynamodb_execution_policy.arn
+  policy_arn = aws_iam_policy.lambda_policy.arn
 }
