@@ -28,7 +28,6 @@ module "draw_draw_function" {
 module "route53" {
   source = "./route53"
 }
-
 module "acm" {
   source         = "./acm"
   hosted_zone_id = module.route53.hosted_zone_id
