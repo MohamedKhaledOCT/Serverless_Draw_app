@@ -24,3 +24,12 @@ module "draw_draw_function" {
   source          = "./lambda/draw_draw"
   lambda_role_arn = module.iam_role.lambda_role_arn
 }
+
+module "route53" {
+  source = "./route53"
+}
+
+module "acm" {
+  source         = "./acm"
+  hosted_zone_id = module.route53.hosted_zone_id
+}
