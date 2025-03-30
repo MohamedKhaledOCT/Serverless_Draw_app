@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-1"
+  region = "us-west-1"
 }
 
 module "dynamodb" {
@@ -31,4 +31,9 @@ module "route53" {
 module "acm" {
   source         = "./acm"
   hosted_zone_id = module.route53.hosted_zone_id
+}
+module "api_gateway" {
+  source         = "./api_gateway"
+  certificate_arn = module.acm.certificate_arn
+  hosted_zone_id  = module.route53.hosted_zone_id
 }

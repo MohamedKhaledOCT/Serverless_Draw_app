@@ -27,3 +27,5 @@ resource "aws_route53_zone" "draw_hosted_zone" {
     Project     = "TestProject"
   }
 }
+
+
