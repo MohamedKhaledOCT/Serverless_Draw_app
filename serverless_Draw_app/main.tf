@@ -36,4 +36,6 @@ module "api_gateway" {
   source         = "./api_gateway"
   certificate_arn = module.acm.certificate_arn
   hosted_zone_id  = module.route53.hosted_zone_id
+  lambda_count_draw_arn    = module.count_draw_function.count_draw_arn
+  lambda_count_draw_name   = module.count_draw_function.count_draw_function_name
 }

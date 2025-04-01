@@ -21,3 +21,11 @@ resource "aws_lambda_function" "count_draw" {
     Project     = "DrawApp"
   }
 }
+output "count_draw_arn" {
+  value = aws_lambda_function.count_draw.arn
+}
+
+output "count_draw_function_name" {
+  value = aws_lambda_function.count_draw.function_name
+}
+

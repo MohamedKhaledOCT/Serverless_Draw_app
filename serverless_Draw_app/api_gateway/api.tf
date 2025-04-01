@@ -41,15 +41,17 @@ resource "aws_apigatewayv2_api_mapping" "api_mapping" {
   stage       = aws_apigatewayv2_stage.dev_stage.name
 }
 resource "aws_apigatewayv2_route" "count_route" {
-  api_id        = aws_apigatewayv2_api.draw_http_api.id
-  route_key     = "GET /count"
-  target        = "arn:aws:apigateway:${var.region}:lambda:path/2015-03-31/functions/${aws_lambda_function.count_draw.arn}/invocations"
+  api_id    = aws_apigatewayv2_api.draw_http_api.id
+  route_key = "GET /count"
+  target    = "arn:aws:apigateway:${var.region}:lambda:path/2015-03-31/functions/${var.lambda_count_draw_arn}/invocations"
 }
 
 resource "aws_lambda_permission" "api_gateway_permission" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
-  function_name = aws_lambda_function.count_draw.function_name
+  function_name = var.lambda_count_draw_name
   principal     = "apigateway.amazonaws.com"
   source_arn    = "arn:aws:execute-api:${var.region}:${var.account_id}:${aws_apigatewayv2_api.draw_http_api.id}/*/GET/count"
 }
+
+
