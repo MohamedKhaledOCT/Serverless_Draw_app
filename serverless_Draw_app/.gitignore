@@ -1,7 +1,7 @@
 .terraform.lock.hcl
 .terraform/
 terraform.tfstate
-api_gateway/variables.tf
-lambda/apply_draw/apply_draw.zip
-lambda/count_draw/count_draw.zip
-lambda/draw_draw/draw_draw.zip
+serverless_Draw_app/api_gateway/variables.tf
+serverless_Draw_app/lambda/apply_draw/apply_draw.zip
+serverless_Draw_app/lambda/count_draw/count_draw.zip
+serverless_Draw_app/lambda/draw_draw/draw_draw.zip
