@@ -33,9 +33,14 @@ module "acm" {
   hosted_zone_id = module.route53.hosted_zone_id
 }
 module "api_gateway" {
-  source         = "./api_gateway"
-  certificate_arn = module.acm.certificate_arn
-  hosted_zone_id  = module.route53.hosted_zone_id
+  source              = "./api_gateway"
+  certificate_arn     = module.acm.certificate_arn
+  hosted_zone_id      = module.route53.hosted_zone_id
   lambda_count_draw_arn    = module.count_draw_function.count_draw_arn
   lambda_count_draw_name   = module.count_draw_function.count_draw_function_name
+  lambda_draw_arn          = module.draw_draw_function.draw_draw_arn
+  lambda_draw_name         = module.draw_draw_function.draw_draw_function_name
+  lambda_apply_arn         = module.apply_draw_function.apply_draw_arn
+  lambda_apply_name        = module.apply_draw_function.apply_draw_function_name
 }
+
