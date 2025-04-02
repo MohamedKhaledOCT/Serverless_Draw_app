@@ -1,13 +1,16 @@
 resource "aws_apigatewayv2_api" "draw_http_api" {
-  name          = "draw"
+  name          = "draw-api"
   protocol_type = "HTTP"
-  description   = "HTTP API for Draw Application"
-
-  tags = {
-    Environment = "Production"
-    Project     = "DrawApp"
+  
+  cors_configuration {
+    allow_origins     = ["https://test-draw.com", "https://api.test-draw.com", "https://your-apidomain.com"]
+    allow_methods     = ["GET", "POST", "OPTIONS"]
+    allow_headers     = ["Content-Type", "Authorization", "x-amz-date", "x-api-key", "x-amz-security-token"]
+    expose_headers    = ["x-amz-security-token"]
+    max_age           = 3600
   }
 }
+
 
 resource "aws_apigatewayv2_stage" "dev_stage" {
   api_id      = aws_apigatewayv2_api.draw_http_api.id
