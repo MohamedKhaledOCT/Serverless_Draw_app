@@ -43,4 +43,14 @@ module "api_gateway" {
   lambda_apply_arn         = module.apply_draw_function.apply_draw_arn
   lambda_apply_name        = module.apply_draw_function.apply_draw_function_name
 }
+module "s3" {
+  source = "./s3"
+}
 
+module "cloudfront" {
+  source    = "./cloudfront"
+  s3_bucket = {
+    id                        = module.s3.static_site_bucket_id,
+    bucket_regional_domain_name = module.s3.static_site_bucket_domain_name
+  }
+}
