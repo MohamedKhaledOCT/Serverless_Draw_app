@@ -2,6 +2,9 @@
 
 ## Project Overview
 The **Serverless Draw App** is a scalable, secure, and serverless application that enables users to participate in raffles via a web interface. The project leverages AWS services to provide high availability, performance, and security.
+![draw design for Serv](https://github.com/user-attachments/assets/6e8df58b-7522-4eb4-ab41-7fb9ad0ab36a)
+
+
 
 ---
 
